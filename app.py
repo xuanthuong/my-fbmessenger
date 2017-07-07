@@ -38,8 +38,21 @@ def webhook():
           sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
           recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
           message_text = messaging_event["message"]["text"]  # the message's text
-
-          send_message(sender_id, "got it, let's start!")
+          
+          # Call api.ai or any other trained model -> get response text
+          # Prepare API.ai request
+          req = ai.text_request()
+          req.lang = 'en'
+          req.query = message
+          # Get response from API.ai
+          api_response = req.getresponse()
+          response_str = api_response.read().decode('utf-8')
+          response_obj = json.loads(response_str)
+          if 'result' in response_obj:
+            response = response_obj["result"]["fulfillment"]["speech"]
+            send_message(sender_id, response)
+          else:
+            send_message(sender_id, "got it, let get started")
 
         if messaging_event.get("delivery"):  # delivery confirmation
           pass
