@@ -58,7 +58,6 @@ def webhook():
           #   send_message(sender_id, "got it, let get started")
 
           message = {
-                    "attachment":{
                       "type":"template",
                       "payload":{
                         "template_type":"generic",
@@ -88,7 +87,6 @@ def webhook():
                           }
                         ]
                       }
-                    }
                   }
         
           send_message(sender_id, message)
@@ -120,7 +118,7 @@ def send_message(recipient_id, message_text):
           "id": recipient_id
       },
       "message": {
-          "text": message_text
+          "attachment": message_text
       }
   })
   r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
