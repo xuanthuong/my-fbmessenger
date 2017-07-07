@@ -4,6 +4,9 @@ import json
 
 import requests
 from flask import Flask, request
+import apiai
+
+ai = apiai.ApiAI(os.environ["APIAI_CLIENT_ACCESS_TOKEN"])
 
 app = Flask(__name__)
 
