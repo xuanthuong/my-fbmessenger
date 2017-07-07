@@ -42,20 +42,56 @@ def webhook():
           recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
           message_text = messaging_event["message"]["text"]  # the message's text
           
-          # Call api.ai or any other trained model -> get response text
-          # Prepare API.ai request
-          req = ai.text_request()
-          req.lang = 'en'
-          req.query = message_text
-          # Get response from API.ai
-          api_response = req.getresponse()
-          response_str = api_response.read().decode('utf-8')
-          response_obj = json.loads(response_str)
-          if 'result' in response_obj:
-            response = response_obj["result"]["fulfillment"]["speech"]
-            send_message(sender_id, response)
-          else:
-            send_message(sender_id, "got it, let get started")
+          # # Call api.ai or any other trained model -> get response text
+          # # Prepare API.ai request
+          # req = ai.text_request()
+          # req.lang = 'en'
+          # req.query = message_text
+          # # Get response from API.ai
+          # api_response = req.getresponse()
+          # response_str = api_response.read().decode('utf-8')
+          # response_obj = json.loads(response_str)
+          # if 'result' in response_obj:
+          #   response = response_obj["result"]["fulfillment"]["speech"]
+          #   send_message(sender_id, response)
+          # else:
+          #   send_message(sender_id, "got it, let get started")
+
+          message = {
+                    "attachment":{
+                      "type":"template",
+                      "payload":{
+                        "template_type":"generic",
+                        "elements":[
+                          {
+                            "title":"Welcome to Peter\'s Hats",
+                            "image_url":"https://petersfancybrownhats.com/company_image.png",
+                            "subtitle":"We\'ve got the right hat for everyone.",
+                            "default_action": {
+                              "type": "web_url",
+                              "url": "https://peterssendreceiveapp.ngrok.io/view?item=103",
+                              "messenger_extensions": True,
+                              "webview_height_ratio": "tall",
+                              "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                            },
+                            "buttons":[
+                              {
+                                "type":"web_url",
+                                "url":"https://petersfancybrownhats.com",
+                                "title":"View Website"
+                              },{
+                                "type":"postback",
+                                "title":"Start Chatting",
+                                "payload":"DEVELOPER_DEFINED_PAYLOAD"
+                              }              
+                            ]      
+                          }
+                        ]
+                      }
+                    }
+                  }
+        
+          send_message(sender_id, message)
 
         if messaging_event.get("delivery"):  # delivery confirmation
           pass
