@@ -64,19 +64,19 @@ def webhook():
                         "elements":[
                           {
                             "title":"Welcome to Peter\'s Hats",
-                            "image_url":"https://www.healthstatus.com/wp-content/uploads/2015/02/bananas-improve-health.jpg",
+                            "image_url":"https://healthstatus.com/wp-content/uploads/2015/02/bananas-improve-health.jpg",
                             "subtitle":"We\'ve got the right hat for everyone.",
                             "default_action": {
                               "type": "web_url",
-                              "url": "https://www.healthstatus.com",
+                              "url": "https://healthstatus.com",
                               "messenger_extensions": True,
                               "webview_height_ratio": "tall",
-                              "fallback_url": "https://www.healthstatus.com"
+                              "fallback_url": "https://healthstatus.com"
                             },
                             "buttons":[
                               {
                                 "type":"web_url",
-                                "url":"https://www.healthstatus.com",
+                                "url":"https://healthstatus.com",
                                 "title":"View Website"
                               },{
                                 "type":"postback",
