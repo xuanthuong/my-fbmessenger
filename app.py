@@ -46,7 +46,7 @@ def webhook():
           # Prepare API.ai request
           req = ai.text_request()
           req.lang = 'en'
-          req.query = message
+          req.query = message_text
           # Get response from API.ai
           api_response = req.getresponse()
           response_str = api_response.read().decode('utf-8')
