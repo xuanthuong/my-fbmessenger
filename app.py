@@ -6,7 +6,7 @@ import requests
 from flask import Flask, request
 import apiai
 
-ai = apiai.ApiAI(os.environ["APIAI_CLIENT_ACCESS_TOKEN"])
+ai = apiai.ApiAI("22b626babf6c432db11d6f6c69127fc2")
 
 app = Flask(__name__)
 
