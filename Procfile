@@ -1,1 +1,1 @@
-web: gunicorn app_amaris:app_amaris --log-file=-
+web: gunicorn app:app --log-file=-

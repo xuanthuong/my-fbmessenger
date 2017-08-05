@@ -5,6 +5,8 @@ import json
 import requests
 from flask import Flask, request
 import apiai
+from amaris_demo_msg import get_msg_amaris_welcome, get_msg_quick_topic
+from amaris_demo_msg import get_msg_amaris_insight, get_msg_amaris_media, get_msg_amaris_expertise
 
 ai = apiai.ApiAI("22b626babf6c432db11d6f6c69127fc2")
 
@@ -41,55 +43,12 @@ def webhook():
           sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
           recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
           message_text = messaging_event["message"]["text"]  # the message's text
-          
-          # # Call api.ai or any other trained model -> get response text
-          # # Prepare API.ai request
-          # req = ai.text_request()
-          # req.lang = 'en'
-          # req.query = message_text
-          # # Get response from API.ai
-          # api_response = req.getresponse()
-          # response_str = api_response.read().decode('utf-8')
-          # response_obj = json.loads(response_str)
-          # if 'result' in response_obj:
-          #   response = response_obj["result"]["fulfillment"]["speech"]
-          #   send_message(sender_id, response)
-          # else:
-          #   send_message(sender_id, "got it, let get started")
 
-          message = {
-                      "type":"template",
-                      "payload":{
-                        "template_type":"generic",
-                        "elements":[
-                          {
-                            "title":"Welcome to Peter\'s Hats",
-                            "image_url":"https://saltmarshrunning.com/wp-content/uploads/2014/09/bananasf.jpg",
-                            "subtitle":"We\'ve got the right hat for everyone.",
-                            "default_action": {
-                              "type": "web_url",
-                              "url": "https://saltmarshrunning.com",
-                              "messenger_extensions": True,
-                              "webview_height_ratio": "tall",
-                              "fallback_url": "https://saltmarshrunning.com"
-                            },
-                            "buttons":[
-                              {
-                                "type":"web_url",
-                                "url":"https://saltmarshrunning.com",
-                                "title":"View Website"
-                              },{
-                                "type":"postback",
-                                "title":"Start Chatting",
-                                "payload":"DEVELOPER_DEFINED_PAYLOAD"
-                              }              
-                            ]      
-                          }
-                        ]
-                      }
-                  }
+          ### Get message from somewhere -- important
+          response_msg = process_received_msg(message_text)
+          ### 
         
-          send_message(sender_id, message)
+          send_message(sender_id, response_msg)
 
         if messaging_event.get("delivery"):  # delivery confirmation
           pass
@@ -101,6 +60,18 @@ def webhook():
           pass
 
   return "ok", 200
+
+def process_received_msg(msg):
+  if msg.lower() == "get started":
+    return get_msg_amaris_welcome()
+  elif msg.lower() == "start chatting":
+    return get_msg_quick_topic()
+  elif msg.lower() = "insight":
+    return get_msg_amaris_welcome()
+  elif msg.lower() = "media":
+    return get_msg_amaris_media()
+  elif msg.lower() = "expertise":
+    return get_msg_amaris_expertise()
 
 
 def send_message(recipient_id, message_text):
