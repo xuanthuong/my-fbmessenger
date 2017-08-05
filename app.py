@@ -76,7 +76,7 @@ def process_received_msg(msg):
   elif msg.lower() == "start chatting":
     return get_msg_quick_topic()
   elif msg.lower() == "insight":
-    return get_msg_amaris_welcome()
+    return get_msg_amaris_insight()
   elif msg.lower() == "media":
     return get_msg_amaris_media()
   elif msg.lower() == "expertise":
