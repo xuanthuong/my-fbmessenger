@@ -229,7 +229,7 @@ def get_msg_amaris_media():
   return msg_media
 
 def get_msg_amaris_expertise():
-  return msg_abc
+  return msg_expertise
 
 def get_msg_amaris_solution():
-  return msg_abc
+  return msg_expertise
