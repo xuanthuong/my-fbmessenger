@@ -9,7 +9,7 @@ Description: Create some message for Amaris
 """
 
 
-msg_welcome = {
+msg_welcome = "attachment" : {
   "type": "template",
   "payload": {
     "template_type": "generic",
@@ -61,7 +61,7 @@ msg_quick_topics = {
     }
   ]}
 
-msg_insight = {
+msg_insight = "attachment" : {
   "type":"template",
   "payload":{
     "template_type":"generic",
@@ -126,7 +126,7 @@ msg_insight = {
     ]
   }}
 
-msg_media = {
+msg_media = "attachment" : {
   "type": "template",
   "payload": {
     "template_type": "generic",
@@ -174,7 +174,7 @@ msg_media = {
     ]
   }}
 
-msg_expertise = {
+msg_expertise = "attachment" : {
   "type": "template",
   "payload": {
     "template_type": "generic",
