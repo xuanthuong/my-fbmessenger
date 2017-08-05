@@ -189,7 +189,7 @@ msg_expertise = {
         "buttons":[
           {
             "type": "web_url",
-            "url": "https://www.amaris.com/amaris-website/our-expertises/overview",
+            "url": "https://amaris.com/amaris-website/our-expertises/overview",
             "title": "Read more"
           }
         ]      
@@ -198,7 +198,7 @@ msg_expertise = {
         "title": "Business Management and Consulting",
         "default_action": {
           "type": "web_url",
-          "url": "https://www.amaris.com/amaris-website/our-expertises/business-and-management-consulting",
+          "url": "https://amaris.com/amaris-website/our-expertises/business-and-management-consulting",
           "messenger_extensions": True
         },
         "buttons":[
