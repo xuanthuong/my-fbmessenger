@@ -45,13 +45,13 @@ def webhook():
           message_text = messaging_event["message"]["text"]  # the message's text
           # log(message_text)
           ### Get message from somewhere -- important
-          # response_msg = process_received_msg(message_text)
+          response_msg = process_received_msg(message_text)
           ### 
-          response_msg = {
-            "type":"image",
-            "payload":{
-              "url":"https://saltmarshrunning.com/wp-content/uploads/2014/09/bananasf.jpg"
-            }}
+          # response_msg = {
+          #   "type":"image",
+          #   "payload":{
+          #     "url":"https://saltmarshrunning.com/wp-content/uploads/2014/09/bananasf.jpg"
+          #   }}
           send_message(sender_id, response_msg)
 
         if messaging_event.get("delivery"):  # delivery confirmation
