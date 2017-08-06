@@ -216,6 +216,22 @@ msg_expertise = {"attachment" : {
     ]
   }}}
 
+msg_map = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": {
+                    "element": {
+                        "title": "Amaris Vietnam/Ho Chi Minh",
+                        "image_url": "https://maps.googleapis.com/maps/api/staticmap?&size=400x400&markers=color:red|label:A|Amaris+Vietnam",
+                        "item_url": "https://www.google.com/maps/place/Amaris/@10.7973877,106.7056227,15.22z/data=!4m12!1m6!3m5!1s0x0:0xc4869723fe88b39f!2sAmaris!8m2!3d10.7998706!4d106.7058103!3m4!1s0x0:0xc4869723fe88b39f!8m2!3d10.7998706!4d106.7058103"
+                    }
+                }
+            }
+        }
+    }
+
 def get_msg_amaris_welcome():
   return msg_welcome
 
@@ -231,5 +247,5 @@ def get_msg_amaris_media():
 def get_msg_amaris_expertise():
   return msg_expertise
 
-def get_msg_amaris_solution():
-  return msg_expertise
+def get_msg_amaris_map():
+  return msg_map

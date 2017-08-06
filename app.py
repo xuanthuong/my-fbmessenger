@@ -5,7 +5,7 @@ import json
 import requests
 from flask import Flask, request
 import apiai
-from amaris_demo_msg import get_msg_amaris_welcome, get_msg_quick_topic
+from amaris_demo_msg import get_msg_amaris_welcome, get_msg_quick_topic, get_msg_amaris_map
 from amaris_demo_msg import get_msg_amaris_insight, get_msg_amaris_media, get_msg_amaris_expertise
 
 ai = apiai.ApiAI("22b626babf6c432db11d6f6c69127fc2")
@@ -81,7 +81,9 @@ def process_received_msg(msg):
     return get_msg_amaris_media()
   elif msg.lower() == "expertise":
     return get_msg_amaris_expertise()
-
+  elif msg.lower() == "where is Amaris Vietnam?" or msg.lower() == "show me Amaris Vietnam address":
+    return get_msg_amaris_map()
+      
 
 def send_message(recipient_id, message_text):
   
