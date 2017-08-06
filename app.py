@@ -81,8 +81,12 @@ def process_received_msg(msg):
     return get_msg_amaris_media()
   elif msg.lower() == "expertise":
     return get_msg_amaris_expertise()
-  elif msg.lower() == "where is Amaris Vietnam?" or msg.lower() == "show me Amaris Vietnam address":
+  elif msg == "where is Amaris Vietnam?" or msg.lower() == "show me Amaris Vietnam address":
     return get_msg_amaris_map()
+  default_msg = {
+    "text": "we got it"
+  }
+  return default_msg
       
 
 def send_message(recipient_id, message_text):
