@@ -249,3 +249,25 @@ def get_msg_amaris_expertise():
 
 def get_msg_amaris_map():
   return msg_map
+
+import apiai
+import json
+def get_msg_from_apiai(msg):
+  ai = apiai.ApiAI("8c070a53f3524db8a6b4b656b4a29f02") 
+
+  # Call api.ai or any other trained model -> get response text
+  # Prepare API.ai request
+  req = ai.text_request()
+  req.lang = 'en'
+  req.query = msg
+  # Get response from API.ai
+  api_response = req.getresponse()
+  response_str = api_response.read().decode('utf-8')
+  response_obj = json.loads(response_str)
+  if 'result' in response_obj:
+    # print(json.dumps(response_obj, indent=2, sort_keys = True))
+    response = response_obj["result"]["fulfillment"]["speech"]
+    # print("response: %s" % response)
+    return response
+
+# get_msg_from_apiai("you are so beautiful")
